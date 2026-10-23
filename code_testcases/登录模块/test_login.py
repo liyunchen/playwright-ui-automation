@@ -1,9 +1,10 @@
 """登录模块 UI 自动化用例。
 
-被测对象：QA 自动化测试平台 https://qa-platform.example.com
+被测对象：QA 自动化测试平台（地址见 config/env_config.yaml）
 覆盖：正常登录、错误口令、登录态复用后的直接访问
 """
 
+import os
 
 import allure
 import pytest
@@ -63,7 +64,9 @@ def test_login_with_wrong_password_shows_error(page, base_url, platform_username
 
     with allure.step("2. 用错误口令发起登录"):
         page.get_by_placeholder("请输入用户名").fill(platform_username)
-        page.get_by_placeholder("请输入密码").fill("wrong_password_for_test")
+        # 故意用错的口令，值本身无意义但仍从环境变量取，避免把测试数据写死在代码里
+        wrong_password = os.environ.get("QA_WRONG_PASSWORD", "wrong_password_for_test")
+        page.get_by_placeholder("请输入密码").fill(wrong_password)
         click_login_button(page)
         page.wait_for_timeout(5000)
         page.remove_listener("response", handle)

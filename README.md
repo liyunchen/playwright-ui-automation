@@ -1,9 +1,27 @@
 # QA 自动化测试平台 · UI 自动化测试
 
-> 基于 **Playwright + Pytest** 的 UI 自动化测试项目，验证 `qa-platform.example.com` 平台自身的
-> 登录、项目管理、用例管理、接口管理、环境管理等模块的功能正确性与数据一致性。
+> 基于 **Playwright + Pytest** 的 UI 自动化测试项目，验证 QA 平台的登录、项目管理、
+> 用例管理、接口管理、环境管理等模块的功能正确性与数据一致性。
 
 [![用例](https://img.shields.io/badge/用例-29%20passed-22c55e)]() [![Python](https://img.shields.io/badge/Python-3.13-blue)]() [![Playwright](https://img.shields.io/badge/Playwright-1.64-2ead33)]()
+
+---
+
+## ⚠️ 关于本仓库的脱敏说明
+
+这是一个**作品展示用途**的开源项目，被测平台地址已统一替换为示例域名
+`qa-platform.example.com`，仓库内**不包含任何可访问的真实环境凭据**。
+
+| 项目 | 处理方式 |
+|------|----------|
+| 平台域名 | 替换为 `qa-platform.example.com`；实际使用请通过 `.env` 的 `QA_URL` 注入 |
+| 账号密码 | 全部走 `${VAR}` 占位符 + `.env` 注入，仓库内无明文 |
+| 截图/录屏中的账号 | 侧边栏用户信息（用户名、手机号）已做**不可逆马赛克**处理 |
+| 演示素材格式 | 已统一转为 `.mp4`（h264），跨平台可直接播放 |
+
+**如果你想复用这套框架**：把 `QA_URL` / `QA_USERNAME` / `qa_password` 填进 `.env` 即可，
+无需改动任何代码。定位器（`pages/` 层）是针对具体平台 UI 写的，复用到其他平台时
+需要按目标页面重新校准，建议用 `playwright codegen <你的地址>` 逐个验证。
 
 ---
 
@@ -12,9 +30,11 @@
 | 素材 | 说明 |
 |------|------|
 | `demo_assets/UI自动化演示精选.mp4` | 2 分 08 秒精选集，10 个章节带标题卡 |
-| `demo_screenshots/01~10_*.png` | 2x 高清模块截图（1600×900） |
-| `demo_videos/test_*.webm` | 29 条用例各自的独立录屏，文件名即用例名 |
+| `demo_screenshots/01~10_*.png` | 2x 高清模块截图（1600×900），账号信息已脱敏 |
+| `demo_videos/test_*.mp4` | 28 条用例各自的独立录屏，文件名即用例名 |
 | `demo_assets/项目介绍.md` | 简历要点 + 面试自述稿 + 追问准备 |
+
+素材可用 `scripts/redact_demo_assets.py` 重新生成脱敏版本。
 
 ## 核心设计：UI + 接口 + 数据 三重校验
 
