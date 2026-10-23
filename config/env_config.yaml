@@ -1,0 +1,22 @@
+# 环境配置文件
+# 通过 pytest --env=qa / qa_staging 切换环境
+#
+# ⚠️ 安全约定：所有口令类字段一律走 ${VAR} 占位符，由 .env 或系统环境变量注入。
+#    真实凭证请写入 .env（已被 .gitignore 忽略），切勿提交到仓库。
+#    占位符语法在 conftest.py 的 load_env_config() 中解析，缺失变量会明确报错。
+
+# QA 自动化测试平台（被测对象）
+qa:
+  url: "https://qa-platform.example.com"
+  api_base_url: "https://qa-platform.example.com/api/v1"
+  username: "your.name@example.com"
+  password: "${qa_password}"
+  project_code: "qa_demo"
+
+# 预发布环境（演练多环境切换能力）
+qa_staging:
+  url: "https://qa-staging.example.com"
+  api_base_url: "https://qa-staging.example.com/api/v1"
+  username: "your.name@example.com"
+  password: "${qa_password}"
+  project_code: "qa_demo"

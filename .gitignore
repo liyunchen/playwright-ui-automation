@@ -1,0 +1,82 @@
+# Python 缓存文件
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# 测试报告
+allure-results/
+reports/
+.pytest_cache/
+
+# 失败截图
+failed_screenshots/
+
+# 说明：演示素材（demo_screenshots / demo_videos / demo_assets）是有意提交的，
+# 用于简历与面试展示，因此不在此忽略。
+# 如需临时排除（避免二次提交大文件），用以下命令跳过：
+#   git commit -- . ':!demo_videos'
+
+# CRM 历史代码备份（已停用，保留仅供回溯）
+_backup_crm/
+
+# 虚拟环境
+venv/
+env/
+ENV/
+.venv-demo/
+
+# 临时探测脚本
+probe_*.py
+
+# 演示视频构建中间产物（由 scripts/build_demo_video.py 生成）
+.video_build/
+
+# 登录态缓存（含 token，绝不入库）
+auth_state.json
+**/auth_state.json
+
+# IDE 配置
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 日志文件
+*.log
+
+# 环境变量
+.env
+.env.local
+
+# 图片文件（演示截图例外，需入库展示）
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.ico
+!demo_screenshots/*.png
+!demo_assets/*.png
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# 临时测试文件
+batch_test_*.py
+test_old_customer_*.py
+*_batch_test.py
+快速批量测试.py
+
+# AI 助手工作记录（非项目代码）
+.workbuddy-ai/
+
+# 测试结果和报告
+*result*.json
+*结果*.html
+output.txt
+
+# 临时数据文件
+AI拆分/
+AI智能拆分*.xlsx
