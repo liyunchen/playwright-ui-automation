@@ -32,6 +32,14 @@ probe_*.py
 # 演示视频构建中间产物（由 scripts/build_demo_video.py 生成）
 .video_build/
 
+# 各类素材处理过程的临时目录（build_demo_video / redact_demo_assets）
+.rt/
+.redact_work/
+.redact_test/
+.audit_frames/
+.audit_crops/
+.audit_backup_*/
+
 # 登录态缓存（含 token，绝不入库）
 auth_state.json
 **/auth_state.json
